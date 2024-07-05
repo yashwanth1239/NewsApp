@@ -27,7 +27,7 @@ import com.example.newsprojectpractice.databinding.FragmentArticleBinding
 import com.example.newsprojectpractice.databinding.FragmentHeadlinesBinding
 
 
-class HeadlinesFragment : Fragment() {
+class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
     lateinit var newsViewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
     lateinit var retryButton: Button

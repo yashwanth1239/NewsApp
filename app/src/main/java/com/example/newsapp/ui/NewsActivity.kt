@@ -1,6 +1,7 @@
 package com.example.newsapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,6 +30,30 @@ class NewsActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            Log.d("Navigation", "Navigated to destination: ${destination.label}")
+        }
+
+        // Example of navigating to a fragment programmatically
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.headlinesFragment -> {
+                    navController.navigate(R.id.headlinesFragment)
+                    true
+                }
+                R.id.favouritesFragment -> {
+                    navController.navigate(R.id.favouritesFragment)
+                    true
+                }
+                R.id.searchFragment -> {
+                    navController.navigate(R.id.searchFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
     }
 
 
